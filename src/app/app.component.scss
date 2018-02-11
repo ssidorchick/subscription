@@ -1,0 +1,121 @@
+:host {
+  display: block;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+#config-page {
+  height: 300px;
+  margin-left: 20px;
+
+  h2 {
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 50px
+  }
+
+  .product {
+    width: 350px;
+    vertical-align: top;
+    padding: 30px 0 30px 150px;
+    border: 1px solid #eaeaea;
+    background-color: white;
+  }
+
+  .label {
+    padding: 5px 0;
+    color: #888888;
+  }
+
+  .edit-plan {
+    display: inline-block;
+      width: 125px;
+
+    #plan-input {
+      width: 80px;
+      padding: 5px;
+      border: 1px solid #cccccc;
+    }
+  }
+
+  .edit-seats {
+    display: inline-block;
+    width: 100px;
+
+    #seats-input {
+      width: 30px;
+      padding: 5px;
+      border: 1px solid #cccccc;
+    }
+  }
+
+  .price {
+    display: inline-block;
+    vertical-align: top;
+    width: 75px;
+    height: 50px;
+
+    #cost-value {
+      padding-top: 8px;
+      padding-bottom: 4px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .button-section {
+    width: 500px;
+    text-align: right;
+    margin-top: 20px;
+  }
+}
+
+#done-page {
+  margin-top: 100px;
+  margin-left: 50px;
+
+  h4 {
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .column {
+    display: inline-block;
+    width: 200px;
+    padding: 25px 0 30px 40px;
+    background-color: white;
+    margin-left: 25px;
+    border-radius: 3px;
+  }
+
+  .row {
+    height: 40px;
+
+    .label {
+      display: inline-block;
+      width: 75px;
+      color: #bbbbbb;
+    }
+
+    .value {
+      color: #888;
+      font-weight: 600;
+    }
+
+    .value.updated {
+      color: #30aabc;
+    }
+  }
+
+  .button-section {
+    margin-top: 20px;
+    padding-left: 30px;
+  }
+}
