@@ -8,26 +8,21 @@ import { planCosts, planNames, Subscription, SubscriptionRequest } from '../enti
 
 @Injectable()
 export class SubscriptionService {
-  private currentSubscription: Subscription = {
-    plan: 'good',
-    name: 'Good',
-    seats: 5,
-    cost: 50,
-  }
-  private previuosSubscription: Subscription;
+  private current = this.create({plan: 'good', seats: 5});
+  private previous: Subscription;
 
   // GET /api/current
   getCurrent(): Observable<Subscription> {
-    return of(this.currentSubscription).pipe(
+    return of(this.current).pipe(
       delay(200),
     );
   }
 
   // PUT /api/current
   updateCurrent(request: SubscriptionRequest): Observable<Subscription> {
-    this.previuosSubscription = this.currentSubscription;
-    this.currentSubscription = this.create(request);
-    return of(this.currentSubscription).pipe(
+    this.previous = this.current;
+    this.current = this.create(request);
+    return of(this.current).pipe(
       delay(1000),
     );
   }
@@ -46,6 +41,7 @@ export class SubscriptionService {
       name: planNames[plan],
       seats,
       cost: seats * planCosts[plan],
+      currency: 'USD',
     };
     return subscription;
   }

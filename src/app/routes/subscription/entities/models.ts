@@ -3,6 +3,7 @@ export interface Subscription {
   name: string;
   seats: number;
   cost: number;
+  currency: string;
 }
 
 export interface SubscriptionRequest {

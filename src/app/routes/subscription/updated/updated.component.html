@@ -2,15 +2,15 @@
   <h4>Previous Subscription</h4>
   <div class="row">
     <span class="label">Plan</span>
-    <span class="value" id="old-plan">{{(previuos$ | async).name}}</span>
+    <span class="value" id="old-plan">{{previous.name}}</span>
   </div>
   <div class="row">
     <span class="label">Seats</span>
-    <span class="value" id="old-seats">{{(previuos$ | async).seats}}</span>
+    <span class="value" id="old-seats">{{previous.seats}}</span>
   </div>
   <div class="row">
     <span class="label">Price</span>
-    <span class="value" id="old-cost">{{(previuos$ | async).cost}}</span>
+    <span class="value" id="old-cost">{{previous.cost | currency:current.currency:undefined:'1.0-0'}}</span>
   </div>
 </div>
 
@@ -18,15 +18,15 @@
   <h4>Updated Subscription</h4>
   <div class="row">
     <span class="label">Plan</span>
-    <span class="value" id="new-plan">{{(current$ | async).name}}</span>
+    <span class="value" id="new-plan">{{current.name}}</span>
   </div>
   <div class="row">
     <span class="label">Seats</span>
-    <span class="value" id="new-seats">{{(current$ | async).seats}}</span>
+    <span class="value" id="new-seats">{{current.seats}}</span>
   </div>
   <div class="row">
     <span class="label">Price</span>
-    <span class="value" id="new-cost">{{(current$ | async).cost}}</span>
+    <span class="value" id="new-cost">{{current.cost | currency:current.currency:undefined:'1.0-0'}}</span>
   </div>
 </div>
 <div class="button-section">

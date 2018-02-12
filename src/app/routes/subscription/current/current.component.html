@@ -22,7 +22,7 @@
     </div>
 
     <div class="price">
-      <div id="cost-value">{{subscription?.cost}}</div>
+      <div *ngIf="!!subscription" id="cost-value">{{subscription.cost | currency:subscription.currency:undefined:'1.0-0'}}</div>
       <div class="label">Price</div>
     </div>
   </div>
