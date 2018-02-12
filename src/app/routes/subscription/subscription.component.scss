@@ -1,0 +1,69 @@
+:host {
+  display: block;
+}
+
+#config-page {
+  height: 300px;
+  margin-left: 20px;
+
+  h2 {
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 50px
+  }
+
+  .product {
+    width: 350px;
+    vertical-align: top;
+    padding: 30px 0 30px 150px;
+    border: 1px solid #eaeaea;
+    background-color: white;
+  }
+
+  .label {
+    padding: 5px 0;
+    color: #888888;
+  }
+
+  .edit-plan {
+    display: inline-block;
+      width: 125px;
+
+    #plan-input {
+      width: 80px;
+      padding: 5px;
+      border: 1px solid #cccccc;
+    }
+  }
+
+  .edit-seats {
+    display: inline-block;
+    width: 100px;
+
+    #seats-input {
+      width: 30px;
+      padding: 5px;
+      border: 1px solid #cccccc;
+    }
+  }
+
+  .price {
+    display: inline-block;
+    vertical-align: top;
+    width: 75px;
+    height: 50px;
+
+    #cost-value {
+      padding-top: 8px;
+      padding-bottom: 4px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+
+  .button-section {
+    width: 500px;
+    text-align: right;
+    margin-top: 20px;
+  }
+}

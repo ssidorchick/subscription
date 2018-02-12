@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+h4 {
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.column {
+  display: inline-block;
+  width: 200px;
+  padding: 25px 0 30px 40px;
+  background-color: white;
+  margin-left: 25px;
+  border-radius: 3px;
+}
+
+.row {
+  height: 40px;
+
+  .label {
+    display: inline-block;
+    width: 75px;
+    color: #bbbbbb;
+  }
+
+  .value {
+    color: #888;
+    font-weight: 600;
+  }
+
+  .value.updated {
+    color: #30aabc;
+  }
+}
+
+.button-section {
+  margin-top: 20px;
+  padding-left: 30px;
+}

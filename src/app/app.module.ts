@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
@@ -12,20 +11,22 @@ import {
 } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { SubscriptionModule } from './routes/subscription';
+
 import { environment } from '../environments/environment';
-import { reducers, metaReducers, AppEffects } from './ngrx';
-import { SERVICES } from './services';
-import { COMPONENTS } from './components';
+import { CustomRouterStateSerializer } from './common/ngrx';
+import { reducers, metaReducers } from './ngrx';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
     ReactiveFormsModule,
 
     StoreModule.forRoot(reducers, {metaReducers}),
+    EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
     }),
@@ -33,11 +34,14 @@ import { AppComponent } from './app.component';
       name: 'NgRx Subscription',
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([AppEffects]),
+
+    AppRoutingModule,
+    SubscriptionModule,
   ],
-  providers: [...SERVICES],
+  providers: [
+    {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
+  ],
   declarations: [
-    ...COMPONENTS,
     AppComponent
   ],
   bootstrap: [AppComponent]

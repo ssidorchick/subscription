@@ -11,44 +11,44 @@ export enum Types {
   UPDATE_SUCCESS =      '[App] Update subscription success',
 }
 
-export class GetCurrentSubscriptionAction implements Action {
+export class GetCurrentAction implements Action {
   readonly type = Types.GET_CURRENT;
 }
 
-export class GetCurrentSubscriptionSuccessAction implements Action {
+export class GetCurrentSuccessAction implements Action {
   readonly type = Types.GET_CURRENT_SUCCESS;
 
-  constructor(public subscription: Subscription) { }
+  constructor(public current: Subscription) { }
 }
 
-export class GetSubscriptionPreviewAction implements Action {
+export class GetPreviewAction implements Action {
   readonly type = Types.GET_PREVIEW;
 
   constructor(public request: SubscriptionRequest) { }
 }
 
-export class GetSubscriptionPreviewSuccessAction implements Action {
+export class GetPreviewSuccessAction implements Action {
   readonly type = Types.GET_PREVIEW_SUCCESS;
 
-  constructor(public subscription: Subscription) { }
+  constructor(public preview: Subscription) { }
 }
 
-export class UpdateSubscriptionAction implements Action {
+export class UpdateAction implements Action {
   readonly type = Types.UPDATE;
 
   constructor(public subscription: Subscription) { }
 }
 
-export class UpdateSubscriptionSuccessAction implements Action {
+export class UpdateSuccessAction implements Action {
   readonly type = Types.UPDATE_SUCCESS;
 
-  constructor(public subscription: Subscription) { }
+  constructor(public updated: Subscription) { }
 }
 
 export type Actions
-  = GetCurrentSubscriptionAction
-  | GetCurrentSubscriptionSuccessAction
-  | GetSubscriptionPreviewAction
-  | GetSubscriptionPreviewSuccessAction
-  | UpdateSubscriptionAction
-  | UpdateSubscriptionSuccessAction;
+  = GetCurrentAction
+  | GetCurrentSuccessAction
+  | GetPreviewAction
+  | GetPreviewSuccessAction
+  | UpdateAction
+  | UpdateSuccessAction;

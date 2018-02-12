@@ -10,15 +10,15 @@ import { storeFreeze } from 'ngrx-store-freeze';
 
 import { environment } from '../../environments/environment';
 import { RouterStateUrl } from '../common/ngrx/utils';
-import * as fromApp from './app.reducers';
+import * as fromSubscription from '../routes/subscription/ngrx';
 
 export interface State {
-  app: fromApp.State;
+  subscription: fromSubscription.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  app: fromApp.reducer,
+  subscription: fromSubscription.reducer,
   router: fromRouter.routerReducer,
 };
 
