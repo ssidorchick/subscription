@@ -25,6 +25,11 @@
       <div *ngIf="!!subscription" id="cost-value">{{subscription.cost | currency:subscription.currency:undefined:'1.0-0'}}</div>
       <div class="label">Price</div>
     </div>
+
+    <p *ngIf="subscriptionForm.controls.seats?.errors?.required">Seats should be none empty</p>
+    <p *ngIf="subscriptionForm.controls.seats?.errors?.min">Seats should be greater than 0</p>
+    <p *ngIf="subscriptionForm.controls.seats?.errors?.max">Seats should be less than 200000</p>
+    <p *ngIf="subscriptionForm.controls.seats?.errors?.integer">Seats number should be integer</p>
   </div>
   <div class="button-section">
     <button type="submit" [disabled]="!canUpdateSubscription()">Update Subscription</button>

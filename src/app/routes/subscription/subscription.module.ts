@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation'
 
 import { SubscriptionEffects } from './ngrx';
 import { SubscriptionService } from './services';
@@ -15,8 +16,9 @@ import { UpdatedSubscriptionComponent } from './updated/updated.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule,
     RouterModule,
+    ReactiveFormsModule,
+    CustomFormsModule,
     EffectsModule.forFeature([SubscriptionEffects]),
   ],
   providers: [

@@ -1,10 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Subscription as ReactiveSubscription } from 'rxjs/Subscription';
 import { combineLatest } from 'rxjs/observable/combineLatest';
+// import { distinctUntilChanged } from 'rxjs/operators';
 
+import { validateInteger } from 'app/common/validators';
 import { planNames, Subscription } from '../entities';
 import { State, actions, selectors } from '../ngrx';
 
@@ -25,7 +28,12 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
     this.plans = Object.keys(planNames).map(plan => ({value: plan, name: planNames[plan]}));
     this.subscriptionForm = this.fb.group({
       plan: '',
-      seats: 0,
+      seats: [1, Validators.compose([
+        Validators.required,
+        CustomValidators.min(1),
+        CustomValidators.max(200000),
+        validateInteger ,
+      ])],
     });
   }
 
@@ -46,7 +54,16 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
       }, {emitEvent: false});
     });
 
-    this.subscriptionFormSub = this.subscriptionForm.valueChanges.subscribe(changes => {
+    this.subscriptionFormSub = this.subscriptionForm.valueChanges.pipe(
+      // distinctUntilChanged((a, b) => {
+        // console.log(a, b);
+        // return a.seats === b.seats;
+      // })
+    ).subscribe(changes => {
+      if (!this.subscriptionForm.valid) {
+        return;
+      }
+
       // Reset cost to show preview loading is in progress
       this.subscription = {
         ...this.subscription,
@@ -68,7 +85,8 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
   }
 
   canUpdateSubscription() {
-    return !!this.subscription &&
+    return this.subscriptionForm.valid &&
+           !!this.subscription &&
            (this.subscription.plan !== this.current.plan ||
            this.subscription.seats !== this.current.seats);
   }
