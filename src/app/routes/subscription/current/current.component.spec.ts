@@ -33,7 +33,7 @@ describe('CurrentSubscriptionComponent', () => {
     fixture = TestBed.createComponent(CurrentSubscriptionComponent);
     component = fixture.debugElement.componentInstance;
     store = fixture.debugElement.injector.get(Store);
-    spyOn(store, 'dispatch')
+    spyOn(store, 'dispatch');
     fixture.detectChanges();
   });
 

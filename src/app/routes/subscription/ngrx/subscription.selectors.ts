@@ -6,20 +6,20 @@ import { State } from './subscription.reducers';
 export const getAppState = createFeatureSelector<State>('subscription');
 export const getPrevious = createSelector(
   getAppState,
-  (state) => state.previous,
+  (state) => state.previous
 );
 export const getCurrent = createSelector(
   getAppState,
-  (state) => state.current,
+  (state) => state.current
 );
 export const getPreview = createSelector(
   getAppState,
-  (state) => state.preview,
+  (state) => state.preview
 );
 export const getSubscription = createSelector(
   getCurrent,
   getPreview,
-  (current, preview) => preview || current,
+  (current, preview) => preview || current
 );
 export const getCanUpdate = createSelector(
   getCurrent,
@@ -32,5 +32,5 @@ export const getCanUpdate = createSelector(
 );
 export const getApiError = createSelector(
   getAppState,
-  (state) => state.apiError,
+  (state) => state.apiError
 );

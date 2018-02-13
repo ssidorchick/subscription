@@ -18,9 +18,9 @@ export class SubscriptionEffects {
     switchMap(() =>
       this.subscriptionService.getCurrent().pipe(
         map(subscription => new actions.GetCurrentSuccessAction(subscription)),
-        catchError(error => of(new actions.SetApiErrorAction(error))),
-      ),
-    ),
+        catchError(error => of(new actions.SetApiErrorAction(error)))
+      )
+    )
   );
 
   @Effect()
@@ -29,9 +29,9 @@ export class SubscriptionEffects {
     switchMap(action =>
       this.subscriptionService.getPreview(action.request).pipe(
         map(subscription => new actions.GetPreviewSuccessAction(subscription)),
-        catchError(error => of(new actions.SetApiErrorAction(error))),
-      ),
-    ),
+        catchError(error => of(new actions.SetApiErrorAction(error)))
+      )
+    )
   );
 
   @Effect()
@@ -43,9 +43,9 @@ export class SubscriptionEffects {
           this.router.navigate(['/subscription/updated']);
           return new actions.UpdateSuccessAction(subscription);
         }),
-        catchError(error => of(new actions.SetApiErrorAction(error))),
-      ),
-    ),
+        catchError(error => of(new actions.SetApiErrorAction(error)))
+      )
+    )
   );
 
   constructor(private actions$: Actions, private router: Router,

@@ -3,7 +3,6 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { cold, hot } from 'jasmine-marbles';
 
 import { Subscription } from '../entities';
@@ -69,7 +68,7 @@ describe('SubscriptionEffects', () => {
     const res = cold('-a|', {a: subscription});
     const expected = cold('--b', {b: completion});
     spyOn(subscriptionService, 'updateCurrent').and.returnValue(res);
-    spyOn(router, 'navigate')
+    spyOn(router, 'navigate');
 
     expect(effects.update$).toBeObservable(expected);
     expect(router.navigate).toHaveBeenCalledWith(['/subscription/updated']);

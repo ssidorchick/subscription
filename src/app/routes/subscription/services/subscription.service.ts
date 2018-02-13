@@ -14,7 +14,7 @@ export class SubscriptionService {
   // GET /api/current
   getCurrent(): Observable<Subscription> {
     return of(this.current).pipe(
-      delay(200),
+      delay(200)
     );
   }
 
@@ -23,14 +23,14 @@ export class SubscriptionService {
     this.previous = this.current;
     this.current = subscription;
     return of(this.current).pipe(
-      delay(1000),
+      delay(1000)
     );
   }
 
   // GET /api/preview
   getPreview(request: SubscriptionRequest): Observable<Subscription> {
     return of(this.create(request)).pipe(
-      delay(1000),
+      delay(1000)
     );
   }
 

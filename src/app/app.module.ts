@@ -42,8 +42,8 @@ import { AppComponent } from './app.component';
     {provide: RouterStateSerializer, useClass: CustomRouterStateSerializer},
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
