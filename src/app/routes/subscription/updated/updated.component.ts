@@ -6,7 +6,7 @@ import { Subscription } from '../entities';
 import { State, selectors } from '../ngrx';
 
 @Component({
-  selector: 'app-previous-subscription',
+  selector: 'app-updated-subscription',
   templateUrl: './updated.component.html',
   styleUrls: ['./updated.component.scss'],
 })

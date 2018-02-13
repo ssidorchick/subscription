@@ -19,9 +19,9 @@ export class SubscriptionService {
   }
 
   // PUT /api/current
-  updateCurrent(request: SubscriptionRequest): Observable<Subscription> {
+  updateCurrent(subscription: Subscription): Observable<Subscription> {
     this.previous = this.current;
-    this.current = this.create(request);
+    this.current = subscription;
     return of(this.current).pipe(
       delay(1000),
     );

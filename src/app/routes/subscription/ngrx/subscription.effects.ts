@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { of } from 'rxjs/observable/of';
@@ -49,6 +48,6 @@ export class SubscriptionEffects {
     ),
   );
 
-  constructor(private actions$: Actions, private store: Store<State>,
-    private router: Router, private subscriptionService: SubscriptionService) { }
+  constructor(private actions$: Actions, private router: Router,
+    private subscriptionService: SubscriptionService) { }
 }

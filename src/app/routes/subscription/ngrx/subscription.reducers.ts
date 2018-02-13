@@ -2,17 +2,17 @@ import { Subscription } from '../entities';
 import * as actions from './subscription.actions';
 
 export interface State {
-  readonly previuos: null|Subscription;
+  readonly previous: null|Subscription;
   readonly current: null|Subscription;
   readonly preview: null|Subscription;
-  readonly error: any;
+  readonly apiError: any;
 }
 
 export const initialState: State = {
-  previuos: null,
+  previous: null,
   current: null,
   preview: null,
-  error: null,
+  apiError: null,
 };
 
 export function reducer(state: State = initialState, action: actions.Actions) {
@@ -37,7 +37,7 @@ export function reducer(state: State = initialState, action: actions.Actions) {
       const {updated} = action;
       return {
         ...state,
-        previuos: state.current,
+        previous: state.current,
         current: updated,
         preview: null,
       };
@@ -47,7 +47,7 @@ export function reducer(state: State = initialState, action: actions.Actions) {
       const {error} = action;
       return {
         ...state,
-        error,
+        apiError: error,
       };
     }
 

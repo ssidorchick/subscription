@@ -5,6 +5,7 @@ export const planCosts = {
   best:   1000
 };
 
+// TODO: Localize names
 export const planNames = {
   basic:  'Basic',
   good:   'Good',
