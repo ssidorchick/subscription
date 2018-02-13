@@ -8,7 +8,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n": "ng-xi18n -p src/tsconfig.app.json --i18nFormat=xmb",
+    "start-ru": "ng serve --aot --locale ru --i18n-file src/locale/messages.ru.xtb --i18n-format xtb"
   },
   "private": true,
   "dependencies": {

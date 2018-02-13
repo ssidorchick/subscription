@@ -1,34 +1,34 @@
 <div class="old column">
-  <h4>Previous Subscription</h4>
+  <h4 i18n>Previous Subscription</h4>
   <div class="row">
-    <span class="label">Plan</span>
+    <span class="label" i18n>Plan</span>
     <span class="value" id="old-plan">{{previous.name}}</span>
   </div>
   <div class="row">
-    <span class="label">Seats</span>
+    <span class="label" i18n>Seats</span>
     <span class="value" id="old-seats">{{previous.seats}}</span>
   </div>
   <div class="row">
-    <span class="label">Price</span>
+    <span class="label" i18n>Price</span>
     <span class="value" id="old-cost">{{previous.cost | currency:current.currency:undefined:'1.0-0'}}</span>
   </div>
 </div>
 
 <div class="new column">
-  <h4>Updated Subscription</h4>
+  <h4 i18n>Updated Subscription</h4>
   <div class="row">
-    <span class="label">Plan</span>
+    <span class="label" i18n>Plan</span>
     <span class="value" id="new-plan">{{current.name}}</span>
   </div>
   <div class="row">
-    <span class="label">Seats</span>
+    <span class="label" i18n>Seats</span>
     <span class="value" id="new-seats">{{current.seats}}</span>
   </div>
   <div class="row">
-    <span class="label">Price</span>
+    <span class="label" i18n>Price</span>
     <span class="value" id="new-cost">{{current.cost | currency:current.currency:undefined:'1.0-0'}}</span>
   </div>
 </div>
 <div class="button-section">
-  <button routerLink="/subscription/current" id="back">Back</button>
+  <button routerLink="/subscription/current" i18n>Back</button>
 </div>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE translationbundle [
+<!ELEMENT translationbundle (translation)*>
+<!ATTLIST translationbundle lang CDATA #REQUIRED>
+
+<!ELEMENT translation (#PCDATA|ph)*>
+<!ATTLIST translation id CDATA #REQUIRED>
+<!ATTLIST translation desc CDATA #IMPLIED>
+<!ATTLIST translation meaning CDATA #IMPLIED>
+<!ATTLIST translation xml:space (default|preserve) "default">
+
+<!ELEMENT ph (#PCDATA|ex)*>
+<!ATTLIST ph name CDATA #REQUIRED>
+
+<!ELEMENT ex (#PCDATA)>
+]>
+<translationbundle lang="en-us">
+  <translation id="7830707034534607415">Subscription</translation>
+  <translation id="5605123772636494177">Plan</translation>
+  <translation id="5376258449190300543">Seats</translation>
+  <translation id="8894377483833272091">Price</translation>
+  <translation id="1408325840594040248">Seats should be none empty</translation>
+  <translation id="5513714302517548723">Seats should be greater than 0</translation>
+  <translation id="6574550830358738600">Seats should be less than 200000</translation>
+  <translation id="5630998402994900793">Seats number should be integer</translation>
+  <translation id="7740688528361156077">Update Subscription</translation>
+  <translation id="6830434569793642331">Previous Subscription</translation>
+  <translation id="4478908035319016640">Updated Subscription</translation>
+  <translation id="8890553633144307762">Back</translation>
+</translationbundle>
