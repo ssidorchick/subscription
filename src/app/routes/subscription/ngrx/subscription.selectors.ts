@@ -16,3 +16,7 @@ export const getPreview = createSelector(
   getAppState,
   (state) => state.preview,
 );
+export const getApiError = createSelector(
+  getAppState,
+  (state) => state.error,
+);

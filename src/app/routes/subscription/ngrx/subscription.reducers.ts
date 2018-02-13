@@ -5,12 +5,14 @@ export interface State {
   readonly previuos: null|Subscription;
   readonly current: null|Subscription;
   readonly preview: null|Subscription;
+  readonly error: any;
 }
 
 export const initialState: State = {
   previuos: null,
   current: null,
   preview: null,
+  error: null,
 };
 
 export function reducer(state: State = initialState, action: actions.Actions) {
@@ -38,6 +40,14 @@ export function reducer(state: State = initialState, action: actions.Actions) {
         previuos: state.current,
         current: updated,
         preview: null,
+      };
+    }
+
+    case actions.Types.SET_API_ERROR: {
+      const {error} = action;
+      return {
+        ...state,
+        error,
       };
     }
 

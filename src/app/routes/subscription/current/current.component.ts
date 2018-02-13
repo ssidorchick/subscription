@@ -23,6 +23,7 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
   subscriptionSub: ReactiveSubscription;
   subscriptionForm: FormGroup;
   subscriptionFormSub: ReactiveSubscription;
+  apiError$: Observable<any>;
 
   constructor(private store: Store<State>, private fb: FormBuilder) {
     this.plans = Object.keys(planNames).map(plan => ({value: plan, name: planNames[plan]}));
@@ -71,6 +72,8 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
       };
       this.store.dispatch(new actions.GetPreviewAction(changes));
     });
+
+    this.apiError$ = this.store.select(selectors.getApiError);
 
     this.store.dispatch(new actions.GetCurrentAction());
   }

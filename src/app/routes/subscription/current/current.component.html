@@ -30,6 +30,7 @@
     <p *ngIf="subscriptionForm.controls.seats?.errors?.min">Seats should be greater than 0</p>
     <p *ngIf="subscriptionForm.controls.seats?.errors?.max">Seats should be less than 200000</p>
     <p *ngIf="subscriptionForm.controls.seats?.errors?.integer">Seats number should be integer</p>
+    <p *ngIf="apiError$ | async">{{(apiError$ | async).toString()}}</p>
   </div>
   <div class="button-section">
     <button type="submit" [disabled]="!canUpdateSubscription()">Update Subscription</button>

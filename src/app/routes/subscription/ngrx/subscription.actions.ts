@@ -3,12 +3,13 @@ import { Action } from '@ngrx/store';
 import { Subscription, SubscriptionRequest } from '../entities';
 
 export enum Types {
-  GET_CURRENT =         '[App] Get current subscription',
-  GET_CURRENT_SUCCESS = '[App] Get current subscription success',
-  GET_PREVIEW =         '[App] Get subscription preview',
-  GET_PREVIEW_SUCCESS = '[App] Get subscription preview success',
-  UPDATE =              '[App] Update subscription',
-  UPDATE_SUCCESS =      '[App] Update subscription success',
+  GET_CURRENT =         '[Subscription] Get current subscription',
+  GET_CURRENT_SUCCESS = '[Subscription] Get current subscription success',
+  GET_PREVIEW =         '[Subscription] Get subscription preview',
+  GET_PREVIEW_SUCCESS = '[Subscription] Get subscription preview success',
+  UPDATE =              '[Subscription] Update subscription',
+  UPDATE_SUCCESS =      '[Subscription] Update subscription success',
+  SET_API_ERROR =       '[Subscription] Set request error',
 }
 
 export class GetCurrentAction implements Action {
@@ -45,10 +46,17 @@ export class UpdateSuccessAction implements Action {
   constructor(public updated: Subscription) { }
 }
 
+export class SetApiErrorAction implements Action {
+  readonly type = Types.SET_API_ERROR;
+
+  constructor(public error: any) { }
+}
+
 export type Actions
   = GetCurrentAction
   | GetCurrentSuccessAction
   | GetPreviewAction
   | GetPreviewSuccessAction
   | UpdateAction
-  | UpdateSuccessAction;
+  | UpdateSuccessAction
+  | SetApiErrorAction;
