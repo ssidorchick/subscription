@@ -17,29 +17,38 @@ export const initialState: State = {
 
 export function reducer(state: State = initialState, action: actions.Actions) {
   switch (action.type) {
-    case actions.Types.GET_CURRENT_SUCCESS: {
+    case actions.Types.GET_CURRENT_SUBSCRIPTION_SUCCESS: {
       const {current} = action;
       return {
         ...state,
         current,
+        preview: current,
       };
     }
 
-    case actions.Types.GET_PREVIEW_SUCCESS: {
-      const {preview} = action;
+    case actions.Types.GET_PRODUCT_PREVIEW_SUCCESS: {
+      const {preview: productPreview, index} = action;
+      const {products} = state.preview;
       return {
         ...state,
-        preview,
+        preview: {
+          ...state.preview,
+          products: [
+            ...products.slice(0, index),
+            productPreview,
+            ...products.slice(index + 1),
+          ],
+        },
       };
     }
 
-    case actions.Types.UPDATE_SUCCESS: {
+    case actions.Types.UPDATE_SUBSCRIPTION_SUCCESS: {
       const {updated} = action;
       return {
         ...state,
         previous: state.current,
         current: updated,
-        preview: null,
+        preview: updated,
       };
     }
 

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.row {
+  height: 40px;
+
+  .label {
+    display: inline-block;
+    width: 75px;
+    color: #bbbbbb;
+  }
+
+  .value {
+    color: #888;
+    font-weight: 600;
+  }
+
+  .value.updated {
+    color: #30aabc;
+  }
+}

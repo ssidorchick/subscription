@@ -1,0 +1,28 @@
+<div [formGroup]="productForm">
+  <div class="product">
+    <div class="edit-plan">
+      <div>
+        <select class="plan-input" formControlName="plan">
+          <option *ngFor="let plan of plans" [value]="plan.value">{{plan.name}}</option>
+        </select>
+      </div>
+      <div class="label">
+        <label for="planInput" i18n>Plan</label>
+      </div>
+    </div>
+
+    <div class="edit-seats">
+      <div >
+        <input type="number" class="seats-input" formControlName="seats">
+      </div>
+      <div class="label">
+       <label for="seats-input" i18n>Seats</label>
+      </div>
+    </div>
+
+    <div class="price">
+      <div *ngIf="!updating" class="cost-value">{{product.cost | currency:product.currency:undefined:'1.0-0'}}</div>
+      <div class="label" i18n>Price</div>
+    </div>
+  </div>
+</div>

@@ -1,47 +1,45 @@
 import { Action } from '@ngrx/store';
 
-import { Subscription, SubscriptionRequest } from '../entities';
+import { Product, Subscription, ProductRequest } from '../entities';
 
 export enum Types {
-  GET_CURRENT =         '[Subscription] Get current subscription',
-  GET_CURRENT_SUCCESS = '[Subscription] Get current subscription success',
-  GET_PREVIEW =         '[Subscription] Get subscription preview',
-  GET_PREVIEW_SUCCESS = '[Subscription] Get subscription preview success',
-  UPDATE =              '[Subscription] Update subscription',
-  UPDATE_SUCCESS =      '[Subscription] Update subscription success',
-  SET_API_ERROR =       '[Subscription] Set request error',
+  GET_CURRENT_SUBSCRIPTION =         '[Subscription] Get current subscription',
+  GET_CURRENT_SUBSCRIPTION_SUCCESS = '[Subscription] Get current subscription  success',
+  GET_PRODUCT_PREVIEW =              '[Subscription] Get product preview',
+  GET_PRODUCT_PREVIEW_SUCCESS =      '[Subscription] Get product preview success',
+  UPDATE_SUBSCRIPTION =              '[Subscription] Update subscription',
+  UPDATE_SUBSCRIPTION_SUCCESS =      '[Subscription] Update subscription success',
+  SET_API_ERROR =                    '[Subscription] Set request error',
 }
 
-export class GetCurrentAction implements Action {
-  readonly type = Types.GET_CURRENT;
+export class GetCurrentSubscriptionAction implements Action {
+  readonly type = Types.GET_CURRENT_SUBSCRIPTION;
 }
 
-export class GetCurrentSuccessAction implements Action {
-  readonly type = Types.GET_CURRENT_SUCCESS;
+export class GetCurrentSubscriptionSuccessAction implements Action {
+  readonly type = Types.GET_CURRENT_SUBSCRIPTION_SUCCESS;
 
   constructor(public current: Subscription) { }
 }
 
-export class GetPreviewAction implements Action {
-  readonly type = Types.GET_PREVIEW;
+export class GetProductPreviewAction implements Action {
+  readonly type = Types.GET_PRODUCT_PREVIEW;
 
-  constructor(public request: SubscriptionRequest) { }
+  constructor(public request: ProductRequest, public index: number) { }
 }
 
-export class GetPreviewSuccessAction implements Action {
-  readonly type = Types.GET_PREVIEW_SUCCESS;
+export class GetProductPreviewSuccessAction implements Action {
+  readonly type = Types.GET_PRODUCT_PREVIEW_SUCCESS;
 
-  constructor(public preview: Subscription) { }
+  constructor(public preview: Product, public index: number) { }
 }
 
-export class UpdateAction implements Action {
-  readonly type = Types.UPDATE;
-
-  constructor(public subscription: Subscription) { }
+export class UpdateSubscriptionAction implements Action {
+  readonly type = Types.UPDATE_SUBSCRIPTION;
 }
 
-export class UpdateSuccessAction implements Action {
-  readonly type = Types.UPDATE_SUCCESS;
+export class UpdateSubscriptionSuccessAction implements Action {
+  readonly type = Types.UPDATE_SUBSCRIPTION_SUCCESS;
 
   constructor(public updated: Subscription) { }
 }
@@ -53,10 +51,10 @@ export class SetApiErrorAction implements Action {
 }
 
 export type Actions
-  = GetCurrentAction
-  | GetCurrentSuccessAction
-  | GetPreviewAction
-  | GetPreviewSuccessAction
-  | UpdateAction
-  | UpdateSuccessAction
+  = GetCurrentSubscriptionAction
+  | GetCurrentSubscriptionSuccessAction
+  | GetProductPreviewAction
+  | GetProductPreviewSuccessAction
+  | UpdateSubscriptionAction
+  | UpdateSubscriptionSuccessAction
   | SetApiErrorAction;

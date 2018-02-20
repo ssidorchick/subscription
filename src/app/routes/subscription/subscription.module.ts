@@ -8,6 +8,7 @@ import { CustomFormsModule } from 'ng2-validation';
 
 import { SubscriptionEffects } from './ngrx';
 import { SubscriptionService } from './services';
+import { EditableProductComponent, ProductComponent } from './components';
 import { SubscriptionComponent } from './subscription.component';
 import { CurrentSubscriptionComponent } from './current/current.component';
 import { UpdatedSubscriptionComponent } from './updated/updated.component';
@@ -26,6 +27,8 @@ import { UpdatedSubscriptionComponent } from './updated/updated.component';
     SubscriptionService,
   ],
   declarations: [
+    EditableProductComponent,
+    ProductComponent,
     SubscriptionComponent,
     CurrentSubscriptionComponent,
     UpdatedSubscriptionComponent,

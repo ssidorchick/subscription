@@ -1,37 +1,17 @@
 <h2 i18n>Subscription</h2>
-<form [formGroup]="subscriptionForm" (ngSubmit)="updateSubscription()" novalidate>
-  <div class="product">
-    <div class="edit-plan">
-      <div>
-        <select id="plan-input" formControlName="plan">
-          <option *ngFor="let plan of plans" [value]="plan.value">{{plan.name}}</option>
-        </select>
-      </div>
-      <div class="label">
-        <label for="planInput" i18n>Plan</label>
-      </div>
-    </div>
-
-    <div class="edit-seats">
-      <div>
-        <input id="seats-input" type="number" formControlName="seats">
-      </div>
-      <div class="label">
-       <label for="seats-input" i18n>Seats</label>
+<form [formGroup]="subscriptionForm" (ngSubmit)="update()" novalidate>
+  <div formArrayName="products">
+    <div *ngFor="let product of productsControl.controls; let i=index">
+      <div [formGroupName]="i">
+        <app-editable-product formControlName="product"></app-editable-product>
+        <p *ngIf="productsControl.controls[i].controls.product.errors?.seats?.required" i18n>Seats should be none empty</p>
+        <p *ngIf="productsControl.controls[i].controls.product.errors?.seats?.min" i18n>Seats should be greater than 0</p>
+        <p *ngIf="productsControl.controls[i].controls.product.errors?.seats?.max" i18n>Seats should be less than 200000</p>
+        <p *ngIf="productsControl.controls[i].controls.product.errors?.seats?.integer" i18n>Seats number should be integer</p>
       </div>
     </div>
-
-    <div class="price">
-      <div *ngIf="!!subscription && !loading" id="cost-value">{{subscription.cost | currency:subscription.currency:undefined:'1.0-0'}}</div>
-      <div class="label" i18n>Price</div>
-    </div>
-
-    <p *ngIf="subscriptionForm.controls.seats?.errors?.required" i18n>Seats should be none empty</p>
-    <p *ngIf="subscriptionForm.controls.seats?.errors?.min" i18n>Seats should be greater than 0</p>
-    <p *ngIf="subscriptionForm.controls.seats?.errors?.max" i18n>Seats should be less than 200000</p>
-    <p *ngIf="subscriptionForm.controls.seats?.errors?.integer" i18n>Seats number should be integer</p>
-    <p *ngIf="apiError$ | async">{{(apiError$ | async).toString()}}</p>
   </div>
+  <p *ngIf="apiError$ | async">{{(apiError$ | async).toString()}}</p>
   <div class="button-section">
     <button type="submit" [disabled]="!(canUpdate$ | async) || !subscriptionForm.valid" i18n>Update Subscription</button>
   </div>

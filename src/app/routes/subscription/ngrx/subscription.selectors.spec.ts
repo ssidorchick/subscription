@@ -2,8 +2,11 @@ import { initialState } from './subscription.reducers';
 import * as selectors from './subscription.selectors';
 
 describe('subscription selectors', () => {
-  const subscription = {plan: 'good', name: 'Good', seats: 1, cost: 1, currency: 'USD'};
-  const subscription2 = {plan: 'good', name: 'Good', seats: 2, cost: 2, currency: 'USD'};
+  const product = {plan: 'good', name: 'Good', seats: 1, cost: 1, currency: 'USD'};
+  const subscription = {products: [product]};
+  const subscriptionView = {products: [{product}]};
+  const product2 = {plan: 'good', name: 'Good', seats: 2, cost: 2, currency: 'USD'};
+  const subscription2 = {products: [product2]};
 
   it('getPrevious should return previous subscription', () => {
     const state = {...initialState, previous: subscription};
@@ -23,19 +26,9 @@ describe('subscription selectors', () => {
     expect(result).toEqual(subscription);
   });
 
-  it('getSubscriptions should return current subscription when preview is not defined', () => {
-    const result = selectors.getSubscription.projector(subscription, null);
-    expect(result).toEqual(subscription);
-  });
-
-  it('getSubscriptions should return preview subscription when preview is defined', () => {
-    const result = selectors.getSubscription.projector(subscription, subscription2);
-    expect(result).toEqual(subscription2);
-  });
-
-  it('getCanUpdate should return false when preview is null', () => {
-    const result = selectors.getCanUpdate.projector(subscription, null);
-    expect(result).toBe(false);
+  it('getEditableSubscriptions should return editable subscription', () => {
+    const result = selectors.getEditableSubscription.projector(subscription, null);
+    expect(result).toEqual(subscriptionView);
   });
 
   it('getCanUpdate should return false when preview is identical to current', () => {

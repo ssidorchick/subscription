@@ -1,6 +1,6 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { isEqual } from 'lodash';
 
-import { Subscription } from '../entities';
 import { State } from './subscription.reducers';
 
 export const getAppState = createFeatureSelector<State>('subscription');
@@ -16,19 +16,24 @@ export const getPreview = createSelector(
   getAppState,
   (state) => state.preview
 );
-export const getSubscription = createSelector(
-  getCurrent,
+export const getEditableSubscription = createSelector(
   getPreview,
-  (current, preview) => preview || current
+  (preview) => {
+    if (!preview) {
+      return null;
+    }
+
+    const {products, ...rest} = preview;
+    return {
+      ...rest,
+      products: products.map(product => ({product})),
+    };
+  }
 );
 export const getCanUpdate = createSelector(
   getCurrent,
   getPreview,
-  (current, preview) => {
-    return !!preview &&
-           (preview.plan !== current.plan ||
-           preview.seats !== current.seats);
-  }
+  (current, preview) => !isEqual(current, preview)
 );
 export const getApiError = createSelector(
   getAppState,

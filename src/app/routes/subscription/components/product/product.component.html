@@ -1,0 +1,15 @@
+<div class="row">
+  <span class="label" i18n>Product {{id}}</span>
+</div>
+<div class="row">
+  <span class="label" i18n>Plan</span>
+  <span class="value">{{product.name}}</span>
+</div>
+<div class="row">
+  <span class="label" i18n>Seats</span>
+  <span class="value">{{product.seats}}</span>
+</div>
+<div class="row">
+  <span class="label" i18n>Price</span>
+  <span class="value">{{product.cost | currency:product.currency:undefined:'1.0-0'}}</span>
+</div>

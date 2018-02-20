@@ -1,4 +1,4 @@
-export interface Subscription {
+export interface Product {
   plan: string;
   name: string;
   seats: number;
@@ -6,7 +6,11 @@ export interface Subscription {
   currency: string;
 }
 
-export interface SubscriptionRequest {
+export interface Subscription {
+  products: Product[];
+}
+
+export interface ProductRequest {
   plan: string;
   seats: number;
 }
