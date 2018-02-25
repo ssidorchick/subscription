@@ -21,6 +21,4 @@ Run `yarn test` to execute the unit tests via [Karma](https://karma-runner.githu
 
 ## TODO
 
-- Support multiple subscriptions
-
 - Localize subscription name
