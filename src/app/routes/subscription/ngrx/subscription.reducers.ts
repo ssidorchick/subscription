@@ -6,6 +6,7 @@ export interface State {
   readonly current: null|Subscription;
   readonly preview: null|Subscription;
   readonly apiError: any;
+  readonly updating: boolean;
 }
 
 export const initialState: State = {
@@ -13,6 +14,7 @@ export const initialState: State = {
   current: null,
   preview: null,
   apiError: null,
+  updating: false,
 };
 
 export function reducer(state: State = initialState, action: actions.Actions) {
@@ -42,6 +44,13 @@ export function reducer(state: State = initialState, action: actions.Actions) {
       };
     }
 
+    case actions.Types.UPDATE_SUBSCRIPTION: {
+      return {
+        ...state,
+        updating: true,
+      };
+    }
+
     case actions.Types.UPDATE_SUBSCRIPTION_SUCCESS: {
       const {updated} = action;
       return {
@@ -49,6 +58,7 @@ export function reducer(state: State = initialState, action: actions.Actions) {
         previous: state.current,
         current: updated,
         preview: updated,
+        updating: false,
       };
     }
 

@@ -39,3 +39,7 @@ export const getApiError = createSelector(
   getAppState,
   (state) => state.apiError
 );
+export const getUpdating = createSelector(
+  getAppState,
+  (state) => state.updating
+);

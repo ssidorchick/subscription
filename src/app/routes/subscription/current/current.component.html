@@ -13,6 +13,8 @@
   </div>
   <p *ngIf="apiError$ | async">{{(apiError$ | async).toString()}}</p>
   <div class="button-section">
-    <button type="submit" [disabled]="!(canUpdate$ | async) || !subscriptionForm.valid" i18n>Update Subscription</button>
+    <button type="submit" [disabled]="!(canUpdate$ | async) || (updating$ | async) || !subscriptionForm.valid" i18n>
+      {{(updating$ | async) ? 'Updating Subscription' : 'Update Subscription'}}
+    </button>
   </div>
 </form>

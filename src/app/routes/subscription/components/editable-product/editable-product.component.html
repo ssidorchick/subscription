@@ -22,6 +22,7 @@
 
     <div class="price">
       <div *ngIf="!updating" class="cost-value">{{product.cost | currency:product.currency:undefined:'1.0-0'}}</div>
+      <div *ngIf="updating" class="cost-value">-</div>
       <div class="label" i18n>Price</div>
     </div>
   </div>

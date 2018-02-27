@@ -20,6 +20,7 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
   productFormSubs: ReactiveSubscription[] = [];
   canUpdate$: Observable<boolean>;
   apiError$: Observable<any>;
+  updating$: Observable<boolean>;
 
   constructor(private store: Store<State>, private fb: FormBuilder) {
     this.plans = Object.keys(planNames).map(plan => ({value: plan, name: planNames[plan]}));
@@ -55,6 +56,7 @@ export class CurrentSubscriptionComponent implements OnInit, OnDestroy {
 
     this.canUpdate$ = this.store.select(selectors.getCanUpdate);
     this.apiError$ = this.store.select(selectors.getApiError);
+    this.updating$ = this.store.select(selectors.getUpdating);
 
     this.store.dispatch(new actions.GetCurrentSubscriptionAction());
   }
